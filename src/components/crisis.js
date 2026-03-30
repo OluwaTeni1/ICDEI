@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -171,7 +171,7 @@ export const Crisis = () => {
         </Row>
 
         {/* ===== SECTION 5: HIDDEN EMERGENCY ===== */}
-        <Row className="emergency-row mb-5">
+        <Row className="emergency-row mb-5 g-4">
           <Col lg={12}>
             <div className="section-tag">HIDDEN AND GROWING</div>
             <h2 className="emergency-title">
@@ -245,7 +245,7 @@ export const Crisis = () => {
         </Row>
 
         {/* ===== SECTION 6: MINING, DISPLACEMENT & EXPLOITATION ===== */}
-        <Row className="mining-row mb-5">
+        <Row className="mining-row mb-5 g-4">
           <Col lg={12}>
             <div className="section-tag">INTERSECTING RISKS</div>
             <h2 className="mining-title">

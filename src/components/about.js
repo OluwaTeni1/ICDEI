@@ -1,8 +1,8 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import whoWeAreImg from "../assets/img/who-we-are.jpg";
-import ourStoryImg from "../assets/img/our-story.jpg";
+import whoWeAreImg from "../assets/img/who-we-are-1.jpg";
+import ourStoryImg from "../assets/img/our-story-1.jpg";
 
 export const AboutUs = () => {
   return (
@@ -150,8 +150,8 @@ export const AboutUs = () => {
         </Row>
 
         {/* ===== CORE VALUES ===== */}
-        <Row className="values-row mb-5 mt-3 py-1">
-          <Col xs={12} className="text-center mb-2">
+        <Row className="values-row mb-5 mt-3 py-3 g-4">
+          <Col xs={12} className="text-center mb-4 mt-4">
             <div className="section-tag">OUR CORE VALUES</div>
             <h2 className="values-main-title">What Guides Us</h2>
             <div className="divider centered"></div>
@@ -202,7 +202,7 @@ export const AboutUs = () => {
         </Row>
 
         {/* ===== OUR APPROACH ===== */}
-        <Row className="approach-row">
+        <Row className="approach-row g-4 mb-5 mt-3 py-3">
           <Col xs={12} className="text-center mb-4 mt-3">
             <div className="section-tag">OUR HOLISTIC APPROACH</div>
             <h2 className="approach-main-title">

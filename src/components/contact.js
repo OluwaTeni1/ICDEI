@@ -1,6 +1,6 @@
 // ContactPage.jsx
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const ContactPage = () => {
@@ -138,16 +138,43 @@ export const ContactPage = () => {
               <div className="cp-social-area">
                 <h5>Follow Us</h5>
                 <div className="cp-social-flex">
-                  <a href="#" className="cp-social-btn cp-twitter">
+                  <a
+                    href="https://twitter.com/icdei"
+                    className="cp-social-btn cp-twitter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                  >
                     𝕏
                   </a>
-                  <a href="#" className="cp-social-btn cp-facebook">
+
+                  <a
+                    href="https://facebook.com/icdei"
+                    className="cp-social-btn cp-facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                  >
                     f
                   </a>
-                  <a href="#" className="cp-social-btn cp-instagram">
+
+                  <a
+                    href="https://instagram.com/icdei"
+                    className="cp-social-btn cp-instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                  >
                     📷
                   </a>
-                  <a href="#" className="cp-social-btn cp-linkedin">
+
+                  <a
+                    href="https://linkedin.com/company/icdei"
+                    className="cp-social-btn cp-linkedin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
                     in
                   </a>
                 </div>

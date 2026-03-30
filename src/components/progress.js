@@ -2,6 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion, useInView } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
+import mediaImg from "../assets/img/media.jpg";
+import mediareachImg from "../assets/img/media-reach.jpg";
+import traumaImg from "../assets/img/trauma.jpg";
+import teacherImg from "../assets/img/teacher-training.jpg";
+import educationImg from "../assets/img/education-reintegration.jpg";
+import childProtectionImg from "../assets/img/child-protection.jpg";
+import psychosocialImg from "../assets/img/psychosocial.jpg";
+import familyImg from "../assets/img/family.jpg";
 
 // Animated Counter Component
 const AnimatedCounter = ({ end, duration = 2, suffix = "", delay = 0 }) => {
@@ -59,8 +67,7 @@ const OurProgress = () => {
       id: 1,
       title: "Trauma Healing",
       description: "Children receiving psychosocial support in IDP camps",
-      image:
-        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: traumaImg,
       stat: "1,200+",
       icon: "❤️",
     },
@@ -68,8 +75,7 @@ const OurProgress = () => {
       id: 2,
       title: "Teacher Training",
       description: "Educators trained in child-centered approaches",
-      image:
-        "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: teacherImg,
       stat: "300+",
       icon: "📚",
     },
@@ -77,8 +83,7 @@ const OurProgress = () => {
       id: 3,
       title: "Media Reach",
       description: "Child-friendly radio and TV programs",
-      image:
-        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: mediareachImg,
       stat: "Thousands",
       icon: "📻",
     },
@@ -102,40 +107,35 @@ const OurProgress = () => {
       title: "Education Reintegration",
       description:
         "Returning vulnerable children to school with literacy support and safe learning spaces.",
-      image:
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: educationImg,
       icon: "🎓",
     },
     {
       title: "Child Protection",
       description:
         "Community-based surveillance systems protecting children from exploitation.",
-      image:
-        "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: childProtectionImg,
       icon: "🛡️",
     },
     {
       title: "Psychosocial Support",
       description:
         "Counseling, play therapy, and mental health services for trauma-affected children.",
-      image:
-        "https://images.unsplash.com/photo-1543333995-a78aea2eee50?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: psychosocialImg,
       icon: "🧠",
     },
     {
       title: "Family Strengthening",
       description:
         "Parenting education and economic resilience to reduce dependence on child income.",
-      image:
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: familyImg,
       icon: "👪",
     },
     {
       title: "Media & Advocacy",
       description:
         "Child-friendly programming reaching thousands with child rights education.",
-      image:
-        "https://images.unsplash.com/photo-1589903308904-1010c2294adc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: mediaImg,
       icon: "📢",
     },
   ];
@@ -177,7 +177,7 @@ const OurProgress = () => {
         </Row>
 
         {/* ===== SECTION 2: KEY STATISTICS with COUNTERS ===== */}
-        <Row className="stats-row mb-5" ref={statsRef}>
+        <Row className="stats-row mb-5 g-4" ref={statsRef}>
           <Col lg={3} md={6}>
             <motion.div
               className="stat-card"
@@ -248,7 +248,7 @@ const OurProgress = () => {
         </Row>
 
         {/* ===== SECTION 3: IMPACT STORIES with IMAGES ===== */}
-        <Row className="stories-row mb-5">
+        <Row className="stories-row mb-5 g-4">
           <Col lg={12}>
             <h2 className="section-subtitle">Impact in Action</h2>
             <div className="divider"></div>
@@ -262,7 +262,7 @@ const OurProgress = () => {
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 * index }}
               >
-                <div className="story-image-wrapper">
+                <div className="story-image-wrapper-impact">
                   <img
                     src={story.image}
                     alt={story.title}
@@ -318,7 +318,7 @@ const OurProgress = () => {
         </Row>
 
         {/* ===== SECTION 5: GEOGRAPHIC REACH with FLAGS ===== */}
-        <Row className="geographic-row mb-5">
+        <Row className="geographic-row mb-5 g-4">
           <Col lg={12}>
             <h2 className="section-subtitle">Where We Work</h2>
             <div className="divider"></div>
@@ -355,7 +355,7 @@ const OurProgress = () => {
         </Row>
 
         {/* ===== SECTION 6: SDG ALIGNMENT with ICONS ===== */}
-        <Row className="flex justify-content-between sdg-row mb-5">
+        <Row className="flex justify-content-between sdg-row mb-5 g-4">
           <Col lg={12}>
             <h2 className="section-subtitle">Aligned with Global Goals</h2>
             <div className="divider"></div>
