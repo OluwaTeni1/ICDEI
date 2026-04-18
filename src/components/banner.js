@@ -11,6 +11,7 @@ const sliderData = [
       "From vulnerability and exploitation to protection, education, and purpose. Every child deserves safety, dignity, and the chance to thrive.",
     image: heroImg1,
     cta: "#",
+    page: "join",
     buttonText: "Join Our Mission",
   },
   {
@@ -20,6 +21,7 @@ const sliderData = [
       "Collaborate with us to drive lasting change through shared vision and resources.",
     image: heroImg2,
     cta: "#",
+    page: "join",
     buttonText: "Become a Partner",
   },
   {
@@ -28,11 +30,12 @@ const sliderData = [
     subtitle: "Your support sparks opportunities and transforms futures.",
     image: heroImg3,
     cta: "#",
+    page: "support",
     buttonText: "Support the Mission",
   },
 ];
 
-export const HeroSlider = () => {
+export const HeroSlider = ({ onNavigate }) => {
   const [current, setCurrent] = useState(0);
   const length = sliderData.length;
 
@@ -48,6 +51,12 @@ export const HeroSlider = () => {
     const autoPlay = setInterval(nextSlide, 100000);
     return () => clearInterval(autoPlay);
   }, [nextSlide]);
+
+  const handleButtonClick = (page) => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
 
   return (
     <section className="hero-section" id="home">
@@ -88,9 +97,12 @@ export const HeroSlider = () => {
 
                 <h1 className="hero-title">{slide.title}</h1>
                 <p className="hero-text mx-auto">{slide.subtitle}</p>
-                <a href={slide.cta} className="hero-btn">
+                <button
+                  onClick={() => handleButtonClick(slide.page)}
+                  className="hero-btn"
+                >
                   {slide.buttonText} <i className="fas fa-arrow-right ms-2"></i>
-                </a>
+                </button>
               </div>
             </div>
           ))}

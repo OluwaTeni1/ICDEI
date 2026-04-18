@@ -2,7 +2,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export const Crisis = () => {
+export const Crisis = ({ onNavigate }) => {
+  const handleButtonClick = (page) => {
+    if (onNavigate) {
+      onNavigate("join");
+    }
+  };
   return (
     <section className="crisis-section" id="crisis">
       {/* Decorative Background Elements */}
@@ -350,9 +355,15 @@ export const Crisis = () => {
                   See Our Solutions
                   <i className="fas fa-arrow-right ms-2"></i>
                 </a>
-                <a href="#partner" className="btn btn-outline-crisis">
+                {/* <a href="#" className="btn btn-outline-crisis">
                   Partner With Us
-                </a>
+                </a> */}
+                <button
+                  onClick={() => handleButtonClick("join")}
+                  className="btn btn-outline-crisis"
+                >
+                  Partner With Us
+                </button>
               </div>
             </div>
           </Col>

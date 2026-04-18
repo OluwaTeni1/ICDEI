@@ -4422,3 +4422,507 @@ nav.navbar .items-center {
     font-size: 1rem;
   }
 }
+
+/* -- Support Page -- */
+/* Support Page Styles */
+
+.support {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color) 0%,
+    var(--background-color) 100%
+  );
+}
+
+/* Banner Section */
+.support-banner {
+  height: 60vh;
+  background-image: url("./assets/img/gallery-8.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.support-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.banner-content {
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.support-banner-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--background-color);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.support-banner-title .highlight {
+  color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.support-banner-title .highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--secondary-color);
+  transform: scaleX(0);
+  animation: underline 0.8s ease forwards;
+}
+
+.support-banner-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* Form Container */
+.form-container {
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(161, 106, 5, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInUp 0.6s ease;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.form-subtitle {
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+/* Glass Inputs */
+.glass-input {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: var(--primary-color) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.glass-input::placeholder {
+  color: rgba(105, 81, 9, 0.6) !important;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2) !important;
+  color: var(--primary-color) !important;
+}
+
+/* Form Labels */
+.form-label {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Select Dropdown */
+.glass-input option {
+  background: var(--secondary-color);
+  color: var(--accent-color);
+}
+
+/* Checkbox */
+.glass-checkbox {
+  color: var(--accent-color);
+}
+
+.glass-checkbox input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, #ffd700, #ffd966);
+  border: none;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  color: var(--accent-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ffd966, #ffd700);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .glass-card {
+    padding: 30px;
+  }
+
+  .support-banner-title {
+    font-size: 2.5rem;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .support-banner {
+    height: 50vh;
+    background-attachment: scroll;
+  }
+
+  .support-banner-title {
+    font-size: 2rem;
+  }
+
+  .support-banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .glass-card {
+    padding: 25px;
+  }
+
+  .form-container {
+    padding: 50px 0;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .support-banner-title {
+    font-size: 1.5rem;
+  }
+
+  .glass-card {
+    padding: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+.glass-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.glass-checkbox .form-check-input {
+  width: 18px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+}
+
+.glass-checkbox .form-check-input:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.glass-checkbox .form-check-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.glass-checkbox .form-check-label {
+  color: var(--accent-color);
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 0.95rem;
+}
+
+/* Join Page Styles */
+.join {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color) 0%,
+    var(--background-color) 100%
+  );
+}
+
+/* Banner Section */
+.join-banner {
+  height: 60vh;
+  background-image: url("./assets/img/family.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.join-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.join-banner-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--background-color);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.join-banner-title .highlight {
+  color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.join-banner-title .highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--secondary-color);
+  transform: scaleX(0);
+  animation: underline 0.8s ease forwards;
+}
+
+.join-banner-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* Expertise Checkbox Group */
+.expertise-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Glass Checkbox */
+.glass-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.glass-checkbox .form-check-input {
+  width: 18px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  margin: 0;
+}
+
+.glass-checkbox .form-check-input:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.glass-checkbox .form-check-label {
+  color: var(--accent-color);
+  cursor: pointer;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* .glass-checkbox:hover .form-check-label {
+  color: var(--secondary-color);
+} */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .join-banner {
+    height: 50vh;
+    background-attachment: scroll;
+  }
+
+  .join-banner-title {
+    font-size: 2rem;
+  }
+
+  .join-banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .expertise-group {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .join-banner-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Donation Type Buttons */
+.donation-type-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.donation-type-btn {
+  flex: 1;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.donation-type-btn i {
+  font-size: 1.2rem;
+}
+
+.donation-type-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.donation-type-btn.active {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/* Back Home Button */
+.back-home-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-5px);
+}
+
+/* Form Text */
+.text-muted {
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .donation-type-group {
+    flex-direction: column;
+  }
+
+  .donation-type-btn {
+    width: 100%;
+  }
+}

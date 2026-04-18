@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import logo from "../assets/img/Icdei-logo.png";
 
-export const NavBar = () => {
+export const NavBar = ({ onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
 
@@ -55,9 +55,27 @@ export const NavBar = () => {
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
-    const element = document.getElementById(value);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    // First navigate to home page, then scroll to section
+    if (onNavigate) {
+      onNavigate("home");
+      setTimeout(() => {
+        const element = document.getElementById(value);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(value);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const handlePageNavigation = (page) => {
+    setActiveLink(page);
+    if (onNavigate) {
+      onNavigate(page);
     }
   };
 
@@ -70,7 +88,10 @@ export const NavBar = () => {
       fixed="top"
     >
       <Container fluid>
-        <Navbar.Brand href="#">
+        <Navbar.Brand
+          onClick={() => handlePageNavigation("home")}
+          style={{ cursor: "pointer" }}
+        >
           <img src={logo} alt="Logo" />
         </Navbar.Brand>
 
@@ -84,7 +105,7 @@ export const NavBar = () => {
           >
             <Nav.Link
               className={`navbar-link ${activeLink === "home" ? "active" : ""}`}
-              onClick={() => onUpdateActiveLink("home")}
+              onClick={() => handlePageNavigation("home")}
             >
               Home
             </Nav.Link>
@@ -128,7 +149,10 @@ export const NavBar = () => {
             </Nav.Link>
           </Nav>
 
-          <Button className="get-involved-btn" href="#contact">
+          <Button
+            className="get-involved-btn"
+            onClick={() => handlePageNavigation("support")}
+          >
             Get Involved
           </Button>
         </Navbar.Collapse>

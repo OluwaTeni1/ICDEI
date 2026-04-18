@@ -33,7 +33,12 @@ export const HeroPage = () => {
                   <i className="fas fa-arrow-right ms-2"></i>
                 </Button>
 
-                <Button variant="outline-light" size="lg" className="px-4 py-2">
+                <Button
+                  href="#support"
+                  variant="outline-light"
+                  size="lg"
+                  className="px-4 py-2"
+                >
                   <i className="fas fa-hand-holding-heart me-2"></i>
                   Partner With Us
                 </Button>

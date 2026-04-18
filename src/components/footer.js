@@ -25,10 +25,31 @@ export const Footer = () => {
 
   // Social links
   const socialLinks = [
-    { icon: "𝕏", url: "#", label: "Twitter" },
-    { icon: "f", url: "#", label: "Facebook" },
-    { icon: "📷", url: "#", label: "Instagram" },
-    { icon: "in", url: "#", label: "LinkedIn" },
+    {
+      icon: <i class="fa-brands fa-x-twitter"></i>,
+      url: "https://x.com/ICDEI188703",
+      label: "Twitter",
+    },
+    {
+      icon: <i class="fa-brands fa-facebook"></i>,
+      url: "https://web.facebook.com/people/Impartville-Children-Development-and-Empowerment-Initiative-icdei/61571306805086/ ",
+      label: "Facebook",
+    },
+    {
+      icon: <i class="fa-brands fa-instagram"></i>,
+      url: "https://www.instagram.com/impartville_icdei/reel/DEft2nZu2Kt ",
+      label: "Instagram",
+    },
+    {
+      icon: <i class="fa-brands fa-linkedin-in"></i>,
+      url: "https://www.linkedin.com/company/impartville-children-development-and-empowerment-initiative-icdei/posts/?feedView=all&viewAsMember=true",
+      label: "LinkedIn",
+    },
+    {
+      icon: <i class="fa-brands fa-tiktok"></i>,
+      url: "https://www.tiktok.com/@impartville.icdei",
+      label: "TikTok",
+    },
   ];
 
   return (

@@ -165,7 +165,7 @@ export const ContactPage = () => {
                     rel="noopener noreferrer"
                     aria-label="Instagram"
                   >
-                    📷
+                    <i class="fa-brands fa-linkedin-in"></i>
                   </a>
 
                   <a
@@ -271,7 +271,7 @@ export const ContactPage = () => {
         </Row>
 
         {/* ===== BOTTOM CTA ===== */}
-        <Row className="cp-cta-row">
+        {/* <Row className="cp-cta-row">
           <Col lg={12}>
             <div className="cp-cta-block">
               <h3>Partner With Us</h3>
@@ -289,7 +289,7 @@ export const ContactPage = () => {
               </div>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </div>
   );

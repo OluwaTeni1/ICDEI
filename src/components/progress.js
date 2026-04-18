@@ -57,7 +57,7 @@ const AnimatedCounter = ({ end, duration = 2, suffix = "", delay = 0 }) => {
 };
 
 // Main Progress Section Component - MAKE SURE THIS IS EXPORTED
-const OurProgress = () => {
+const OurProgress = ({ onNavigate }) => {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
@@ -153,6 +153,12 @@ const OurProgress = () => {
     { number: 8, title: "Decent Work & Growth", icon: "💼", color: "#A21942" },
     { number: 16, title: "Peace & Justice", icon: "🕊️", color: "#00689D" },
   ];
+
+  const handleButtonClick = (page) => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
 
   return (
     <section className="progress-section" id="work">
@@ -417,13 +423,19 @@ const OurProgress = () => {
                 in saving the future today.
               </p>
               <div className="cta-buttons">
-                <a href="#donate" className="btn btn-primary-progress">
+                <button
+                  onClick={() => handleButtonClick("support")}
+                  className="btn btn-primary-progress"
+                >
                   Support Our Work
                   <i className="fas fa-arrow-right ms-2"></i>
-                </a>
-                <a href="#partner" className="btn btn-outline-progress">
+                </button>
+                <button
+                  onClick={() => handleButtonClick("partner")}
+                  className="btn btn-outline-progress"
+                >
                   Partner With Us
-                </a>
+                </button>
               </div>
             </div>
           </Col>
