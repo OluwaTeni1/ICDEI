@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { loadStripe } from "@stripe/stripe-js";
 
-// Your Stripe Publishable Key
+// Hardcoded Stripe Publishable Key
 const stripePromise = loadStripe(
   "pk_test_51TNTKnJRamyD9SfpJnHxF9J2d5abRaGMhZmmf1V4unSjKVkrvtCIyWa9qnncrQ0b3FkwbM6cxpNU5WnOgsTnw6P500Qo6f4PQL"
 );
@@ -41,7 +41,6 @@ export const Support = ({ onNavigate }) => {
     }
   };
 
-  // Handle Cash Donation with Stripe
   const handleCashDonation = async () => {
     setIsProcessing(true);
 
@@ -75,7 +74,6 @@ export const Support = ({ onNavigate }) => {
     }
   };
 
-  // Handle In-Kind Donation
   const handleInKindDonation = () => {
     console.log("In-kind donation submitted:", {
       fullName: formData.fullName,
@@ -95,7 +93,6 @@ export const Support = ({ onNavigate }) => {
     }
   };
 
-  // Handle other support types
   const handleOtherSupport = () => {
     console.log("Support form submitted:", {
       fullName: formData.fullName,
@@ -135,7 +132,6 @@ export const Support = ({ onNavigate }) => {
 
   return (
     <section id="support" className="support">
-      {/* Banner Section */}
       <div className="support-banner">
         <div className="support-overlay">
           <div className="banner-content">
@@ -153,7 +149,6 @@ export const Support = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Form Section with Glassmorphism */}
       <Container className="form-container">
         <Row className="justify-content-center">
           <Col lg={10} xl={8}>
@@ -282,14 +277,10 @@ export const Support = ({ onNavigate }) => {
                           onChange={handleChange}
                           required
                           rows={5}
-                          placeholder="Please list the items you wish to donate (e.g., books, school supplies, clothing, food items, etc.)"
+                          placeholder="Please list the items you wish to donate"
                           className="glass-input"
                           style={{ resize: "none" }}
                         />
-                        <Form.Text className="text-muted">
-                          Our team will contact you to arrange collection or
-                          drop-off.
-                        </Form.Text>
                       </Form.Group>
                     )}
 
@@ -302,15 +293,11 @@ export const Support = ({ onNavigate }) => {
                           value={formData.cashAmount}
                           onChange={handleChange}
                           required
-                          placeholder="Enter amount (e.g., 10, 25, 50, 100)"
+                          placeholder="Enter amount"
                           className="glass-input"
                           min="1"
                           step="1"
                         />
-                        <Form.Text className="text-muted">
-                          You will be redirected to Stripe to complete your
-                          payment securely.
-                        </Form.Text>
                       </Form.Group>
                     )}
                   </>
@@ -324,7 +311,7 @@ export const Support = ({ onNavigate }) => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Tell us more about how you'd like to help..."
+                    placeholder="Tell us more..."
                     className="glass-input"
                     style={{ resize: "none" }}
                   />
