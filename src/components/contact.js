@@ -139,7 +139,7 @@ export const ContactPage = () => {
                 <h5>Follow Us</h5>
                 <div className="cp-social-flex">
                   <a
-                    href="https://twitter.com/icdei"
+                    href="https://x.com/ICDEI188703"
                     className="cp-social-btn cp-twitter"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -149,7 +149,7 @@ export const ContactPage = () => {
                   </a>
 
                   <a
-                    href="https://facebook.com/icdei"
+                    href="https://web.facebook.com/people/Impartville-Children-Development-and-Empowerment-Initiative-icdei/61571306805086/ "
                     className="cp-social-btn cp-facebook"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -159,7 +159,7 @@ export const ContactPage = () => {
                   </a>
 
                   <a
-                    href="https://instagram.com/icdei"
+                    href="https://www.instagram.com/impartville_icdei/reel/DEft2nZu2Kt "
                     className="cp-social-btn cp-instagram"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -169,13 +169,22 @@ export const ContactPage = () => {
                   </a>
 
                   <a
-                    href="https://linkedin.com/company/icdei"
+                    href="https://www.linkedin.com/company/impartville-children-development-and-empowerment-initiative-icdei/posts/?feedView=all&viewAsMember=true"
                     className="cp-social-btn cp-linkedin"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
                     in
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@impartville.icdei"
+                    className="cp-social-btn cp-tiktok"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok"
+                  >
+                    <i class="fa-brands fa-x-twitter"></i>
                   </a>
                 </div>
               </div>

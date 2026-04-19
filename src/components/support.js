@@ -3,9 +3,9 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { loadStripe } from "@stripe/stripe-js";
 
 // Hardcoded Stripe Publishable Key
-const stripePromise = loadStripe(
-  "pk_test_51TNTKnJRamyD9SfpJnHxF9J2d5abRaGMhZmmf1V4unSjKVkrvtCIyWa9qnncrQ0b3FkwbM6cxpNU5WnOgsTnw6P500Qo6f4PQL"
-);
+// const stripePromise = loadStripe(
+//   "pk_test_51TNTKnJRamyD9SfpJnHxF9J2d5abRaGMhZmmf1V4unSjKVkrvtCIyWa9qnncrQ0b3FkwbM6cxpNU5WnOgsTnw6P500Qo6f4PQL"
+// );
 
 export const Support = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
