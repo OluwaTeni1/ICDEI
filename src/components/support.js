@@ -41,73 +41,127 @@ export const Support = ({ onNavigate }) => {
     }
   };
 
-  const handleCashDonation = async () => {
-    setIsProcessing(true);
+  // const buildMailtoLink = (subject, bodyLines) => {
+  //   const body = bodyLines.join("\n");
+  //   return `mailto:youremail@example.com?subject=${encodeURIComponent(
+  //     subject
+  //   )}&body=${encodeURIComponent(body)}`;
+  // };
 
-    try {
-      const response = await fetch(
-        "http://localhost:4242/api/create-checkout-session",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: parseFloat(formData.cashAmount),
-            email: formData.email,
-            name: formData.fullName,
-            phone: formData.phone,
-          }),
-        }
-      );
+  // const handleCashDonation = async () => {
+  //   // setIsProcessing(true);
+  //   const subject = "New Cash Donation Submission";
 
-      const session = await response.json();
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:4242/api/create-checkout-session",
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           amount: parseFloat(formData.cashAmount),
+  //           email: formData.email,
+  //           name: formData.fullName,
+  //           phone: formData.phone,
+  //         }),
+  //       }
+  //     );
 
-      if (session.url) {
-        window.location.href = session.url;
-      } else {
-        alert("Failed to create payment session. Please try again.");
-      }
-    } catch (error) {
-      console.error("Payment error:", error);
-      alert("Unable to connect to payment server. Please try again later.");
-    } finally {
-      setIsProcessing(false);
-    }
+  //     const session = await response.json();
+
+  //     if (session.url) {
+  //       window.location.href = session.url;
+  //     } else {
+  //       alert("Failed to create payment session. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Payment error:", error);
+  //     alert("Unable to connect to payment server. Please try again later.");
+  //   } finally {
+  //     setIsProcessing(false);
+  //   }
+  // };
+
+  // const handleInKindDonation = () => {
+  //   console.log("In-kind donation submitted:", {
+  //     fullName: formData.fullName,
+  //     email: formData.email,
+  //     phone: formData.phone,
+  //     itemsList: formData.itemsList,
+  //     message: formData.message,
+  //     stayUpdated: formData.stayUpdated,
+  //   });
+
+  //   alert(
+  //     "Thank you for your in-kind donation! Our team will contact you within 48 hours to arrange collection."
+  //   );
+
+  //   if (onNavigate) {
+  //     setTimeout(() => onNavigate("home"), 3000);
+  //   }
+  // };
+
+  // const handleOtherSupport = () => {
+  //   console.log("Support form submitted:", {
+  //     fullName: formData.fullName,
+  //     email: formData.email,
+  //     phone: formData.phone,
+  //     supportType: formData.supportType,
+  //     message: formData.message,
+  //     stayUpdated: formData.stayUpdated,
+  //   });
+
+  //   alert("Thank you for your interest! We will get back to you soon.");
+
+  //   if (onNavigate) {
+  //     setTimeout(() => onNavigate("home"), 3000);
+  //   }
+  // };
+
+  const buildMailtoLink = (subject, bodyLines) => {
+    const body = bodyLines.join("\n");
+    return `mailto:isolateni02@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleCashDonation = () => {
+    const subject = "New Cash Donation Submission";
+    const body = [
+      `Full Name: ${formData.fullName}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone || "Not provided"}`,
+      `Donation Amount (USD): ${formData.cashAmount}`,
+      `Message: ${formData.message || "None"}`,
+      `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
+    ];
+    window.location.href = buildMailtoLink(subject, body);
   };
 
   const handleInKindDonation = () => {
-    console.log("In-kind donation submitted:", {
-      fullName: formData.fullName,
-      email: formData.email,
-      phone: formData.phone,
-      itemsList: formData.itemsList,
-      message: formData.message,
-      stayUpdated: formData.stayUpdated,
-    });
-
-    alert(
-      "Thank you for your in-kind donation! Our team will contact you within 48 hours to arrange collection."
-    );
-
-    if (onNavigate) {
-      setTimeout(() => onNavigate("home"), 3000);
-    }
+    const subject = "New In-Kind Donation Submission";
+    const body = [
+      `Full Name: ${formData.fullName}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone || "Not provided"}`,
+      `Items to Donate: ${formData.itemsList}`,
+      `Message: ${formData.message || "None"}`,
+      `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
+    ];
+    window.location.href = buildMailtoLink(subject, body);
   };
 
   const handleOtherSupport = () => {
-    console.log("Support form submitted:", {
-      fullName: formData.fullName,
-      email: formData.email,
-      phone: formData.phone,
-      supportType: formData.supportType,
-      message: formData.message,
-      stayUpdated: formData.stayUpdated,
-    });
-
-    alert("Thank you for your interest! We will get back to you soon.");
-
-    if (onNavigate) {
-      setTimeout(() => onNavigate("home"), 3000);
-    }
+    const subject = "New Support Inquiry";
+    const body = [
+      `Full Name: ${formData.fullName}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone || "Not provided"}`,
+      `Support Type: ${formData.supportType}`,
+      `Message: ${formData.message || "None"}`,
+      `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
+    ];
+    window.location.href = buildMailtoLink(subject, body);
   };
 
   const handleSubmit = (e) => {
