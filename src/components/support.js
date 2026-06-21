@@ -338,7 +338,7 @@ export const Support = ({ onNavigate }) => {
                       </Form.Group>
                     )}
 
-                    {formData.donationType === "cash" && (
+                    {/* {formData.donationType === "cash" && (
                       <Form.Group className="mb-4">
                         <Form.Label>Donation Amount (USD) *</Form.Label>
                         <Form.Control
@@ -353,6 +353,54 @@ export const Support = ({ onNavigate }) => {
                           step="1"
                         />
                       </Form.Group>
+                    )} */}
+                    {formData.donationType === "cash" && (
+                      <div className="account-details-card mb-4">
+                        <div className="account-details-header">
+                          <i className="fas fa-university me-2"></i>
+                          Bank Transfer Details
+                        </div>
+                        <div className="account-details-body">
+                          <div className="account-detail-row">
+                            <span className="account-detail-label">
+                              Account Name
+                            </span>
+                            <span className="account-detail-value">
+                              Your Organization Name
+                            </span>
+                          </div>
+                          <div className="account-detail-row">
+                            <span className="account-detail-label">
+                              Account Number
+                            </span>
+                            <span className="account-detail-value">
+                              0123456789
+                            </span>
+                          </div>
+                          <div className="account-detail-row">
+                            <span className="account-detail-label">
+                              Bank Name
+                            </span>
+                            <span className="account-detail-value">
+                              First Bank of Nigeria
+                            </span>
+                          </div>
+                          <div className="account-detail-row">
+                            <span className="account-detail-label">
+                              Account Type
+                            </span>
+                            <span className="account-detail-value">
+                              Savings
+                            </span>
+                          </div>
+                        </div>
+                        <p className="account-details-note">
+                          <i className="fas fa-info-circle me-1"></i>
+                          After making your transfer, please use the message box
+                          below to tell us your transfer reference or amount so
+                          we can confirm your donation.
+                        </p>
+                      </div>
                     )}
                   </>
                 )}
