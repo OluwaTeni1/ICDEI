@@ -100,7 +100,7 @@ export const ContactPage = () => {
                   <div className="cp-info-block">
                     <div className="cp-icon-large">🌐</div>
                     <h4>Website</h4>
-                    <p>https://icdei.lovable.app</p>
+                    <p>https://icdei.org/</p>
                   </div>
                 </Col>
               </Row>
@@ -159,13 +159,13 @@ export const ContactPage = () => {
                   </a>
 
                   <a
-                    href="https://www.instagram.com/impartville_icdei/reel/DEft2nZu2Kt "
+                    href="https://www.instagram.com/impartville_icdei?igsh=MThrZ3B3amU1YzdsYw%3D%3D "
                     className="cp-social-btn cp-instagram"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
                   >
-                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
                   </a>
 
                   <a
@@ -175,7 +175,7 @@ export const ContactPage = () => {
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
-                    in
+                    <i class="fa-brands fa-linkedin"></i>
                   </a>
                   <a
                     href="https://www.tiktok.com/@impartville.icdei"

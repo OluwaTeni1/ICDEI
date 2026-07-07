@@ -25,9 +25,9 @@ function App() {
     <div className="App">
       <NavBar onNavigate={handleNavigate} />
 
-      {currentPage === "support" && <Support />}
+      {currentPage === "support" && <Support onNavigate={handleNavigate} />}
 
-      {currentPage === "join" && <Join />}
+      {currentPage === "join" && <Join onNavigate={handleNavigate} />}
 
       {currentPage === "home" && (
         <>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
-export const Join = () => {
+export const Join = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -13,6 +13,8 @@ export const Join = () => {
     reason: "",
   });
 
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const expertiseOptions = [
     "Admin/Clerical",
     "Field Work/Events",
@@ -20,6 +22,43 @@ export const Join = () => {
     "IT/Web Support",
     "Fundraising",
   ];
+
+  const FIELD_LABELS = {
+    fullName: "Full Name",
+    email: "Email",
+    phone: "Phone Number",
+    location: "Location",
+    address: "Address",
+    expertise: "Area of Expertise",
+    availability: "Availability",
+    reason: "Reason for Joining",
+  };
+
+  const formatValue = (key, value) => {
+    if (Array.isArray(value)) {
+      return value.length ? value.join(", ") : "None selected";
+    }
+    if (!value) return "Not provided";
+    return value;
+  };
+
+  const getRelevantFieldKeys = () => [
+    "fullName",
+    "email",
+    "phone",
+    "location",
+    "address",
+    "expertise",
+    "availability",
+    "reason",
+  ];
+
+  const buildMailtoLink = (subject, bodyLines) => {
+    const body = bodyLines.join("\n");
+    return `mailto:icdei.info@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -46,8 +85,27 @@ export const Join = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for joining our cause! We will contact you soon.");
+    setIsProcessing(true);
+
+    const keys = getRelevantFieldKeys();
+    const bodyLines = keys.map((key) => {
+      const label = FIELD_LABELS[key] || key;
+      const value = formatValue(key, formData[key]);
+      return `${label}: ${value}`;
+    });
+
+    window.location.href = buildMailtoLink(
+      "New Volunteer Application",
+      bodyLines
+    );
+
+    setTimeout(() => setIsProcessing(false), 1500);
+  };
+
+  const handleNavigateBack = () => {
+    if (onNavigate) {
+      onNavigate("home");
+    }
   };
 
   return (
@@ -56,6 +114,9 @@ export const Join = () => {
       <div className="join-banner">
         <div className="join-overlay">
           <div className="banner-content">
+            <button className="back-home-btn" onClick={handleNavigateBack}>
+              ← Back to Home
+            </button>
             <h1 className="join-banner-title">
               Your <span className="highlight">Input</span> Matters
             </h1>
@@ -206,8 +267,21 @@ export const Join = () => {
                 </Form.Group>
 
                 <div className="text-center">
-                  <Button type="submit" className="submit-btn">
-                    Join Now <i className="fas fa-heart ms-2"></i>
+                  <Button
+                    type="submit"
+                    className="submit-btn"
+                    disabled={isProcessing}
+                  >
+                    {isProcessing ? (
+                      <>
+                        Processing...{" "}
+                        <i className="fas fa-spinner fa-spin ms-2"></i>
+                      </>
+                    ) : (
+                      <>
+                        Join Now <i className="fas fa-heart ms-2"></i>
+                      </>
+                    )}
                   </Button>
                 </div>
               </Form>

@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { loadStripe } from "@stripe/stripe-js";
-
-// Hardcoded Stripe Publishable Key
-// const stripePromise = loadStripe(
-//   "pk_test_51TNTKnJRamyD9SfpJnHxF9J2d5abRaGMhZmmf1V4unSjKVkrvtCIyWa9qnncrQ0b3FkwbM6cxpNU5WnOgsTnw6P500Qo6f4PQL"
-// );
 
 export const Support = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
@@ -33,7 +27,7 @@ export const Support = ({ onNavigate }) => {
 
   const handleSupportTypeChange = (e) => {
     const value = e.target.value;
-    setFormData({ ...formData, supportType: value });
+    setFormData({ ...formData, supportType: value, donationType: "" }); // Reset donationType when supportType changes
     if (value === "donation") {
       setShowDonationForm(true);
     } else {
@@ -43,139 +37,132 @@ export const Support = ({ onNavigate }) => {
 
   // const buildMailtoLink = (subject, bodyLines) => {
   //   const body = bodyLines.join("\n");
-  //   return `mailto:youremail@example.com?subject=${encodeURIComponent(
+  //   return `mailto:isolateni02@gmail.com?subject=${encodeURIComponent(
   //     subject
   //   )}&body=${encodeURIComponent(body)}`;
   // };
 
-  // const handleCashDonation = async () => {
-  //   // setIsProcessing(true);
+  // const handleCashDonation = () => {
   //   const subject = "New Cash Donation Submission";
-
-  //   try {
-  //     const response = await fetch(
-  //       "http://localhost:4242/api/create-checkout-session",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({
-  //           amount: parseFloat(formData.cashAmount),
-  //           email: formData.email,
-  //           name: formData.fullName,
-  //           phone: formData.phone,
-  //         }),
-  //       }
-  //     );
-
-  //     const session = await response.json();
-
-  //     if (session.url) {
-  //       window.location.href = session.url;
-  //     } else {
-  //       alert("Failed to create payment session. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Payment error:", error);
-  //     alert("Unable to connect to payment server. Please try again later.");
-  //   } finally {
-  //     setIsProcessing(false);
-  //   }
+  //   const body = [
+  //     `Full Name: ${formData.fullName}`,
+  //     `Email: ${formData.email}`,
+  //     `Phone: ${formData.phone || "Not provided"}`,
+  //     `Donation Amount (USD): ${formData.cashAmount}`,
+  //     `Message: ${formData.message || "None"}`,
+  //     `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
+  //   ];
+  //   window.location.href = buildMailtoLink(subject, body);
   // };
 
   // const handleInKindDonation = () => {
-  //   console.log("In-kind donation submitted:", {
-  //     fullName: formData.fullName,
-  //     email: formData.email,
-  //     phone: formData.phone,
-  //     itemsList: formData.itemsList,
-  //     message: formData.message,
-  //     stayUpdated: formData.stayUpdated,
-  //   });
-
-  //   alert(
-  //     "Thank you for your in-kind donation! Our team will contact you within 48 hours to arrange collection."
-  //   );
-
-  //   if (onNavigate) {
-  //     setTimeout(() => onNavigate("home"), 3000);
-  //   }
+  //   const subject = "New In-Kind Donation Submission";
+  //   const body = [
+  //     `Full Name: ${formData.fullName}`,
+  //     `Email: ${formData.email}`,
+  //     `Phone: ${formData.phone || "Not provided"}`,
+  //     `Items to Donate: ${formData.itemsList}`,
+  //     `Message: ${formData.message || "None"}`,
+  //     `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
+  //   ];
+  //   window.location.href = buildMailtoLink(subject, body);
   // };
 
   // const handleOtherSupport = () => {
-  //   console.log("Support form submitted:", {
-  //     fullName: formData.fullName,
-  //     email: formData.email,
-  //     phone: formData.phone,
-  //     supportType: formData.supportType,
-  //     message: formData.message,
-  //     stayUpdated: formData.stayUpdated,
-  //   });
-
-  //   alert("Thank you for your interest! We will get back to you soon.");
-
-  //   if (onNavigate) {
-  //     setTimeout(() => onNavigate("home"), 3000);
-  //   }
+  //   const subject = "New Support Inquiry";
+  //   const body = [
+  //     `Full Name: ${formData.fullName}`,
+  //     `Email: ${formData.email}`,
+  //     `Phone: ${formData.phone || "Not provided"}`,
+  //     `Support Type: ${formData.supportType}`,
+  //     `Message: ${formData.message || "None"}`,
+  //     `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
+  //   ];
+  //   window.location.href = buildMailtoLink(subject, body);
   // };
+
+  const FIELD_LABELS = {
+    fullName: "Full Name",
+    email: "Email",
+    phone: "Phone Number",
+    supportType: "How They Want to Support",
+    donationType: "Donation Type",
+    itemsList: "Items to Donate",
+    cashAmount: "Donation Amount (USD)",
+    message: "Message",
+    stayUpdated: "Newsletter Sign-up",
+  };
+
+  const VALUE_LABELS = {
+    supportType: {
+      donation: "Make a Donation",
+      volunteer: "Volunteer my Time",
+      partnership: "Corporate Partnership",
+      sponsor: "Sponsor a Specific Project",
+      media: "Media/Press Inquiry",
+    },
+    donationType: {
+      kind: "Donate in Kind (Items)",
+      cash: "Cash Transfer",
+    },
+  };
+
+  const formatValue = (key, value) => {
+    if (typeof value === "boolean") return value ? "Yes" : "No";
+    if (!value && value !== 0) return "Not provided";
+    if (VALUE_LABELS[key] && VALUE_LABELS[key][value]) {
+      return VALUE_LABELS[key][value];
+    }
+    return value;
+  };
+
+  const getRelevantFieldKeys = () => {
+    const keys = ["fullName", "email", "phone", "supportType"];
+
+    if (formData.supportType === "donation") {
+      keys.push("donationType");
+      if (formData.donationType === "kind") keys.push("itemsList");
+      if (formData.donationType === "cash" && formData.cashAmount) {
+        keys.push("cashAmount");
+      }
+    }
+
+    keys.push("message", "stayUpdated");
+    return keys;
+  };
 
   const buildMailtoLink = (subject, bodyLines) => {
     const body = bodyLines.join("\n");
-    return `mailto:isolateni02@gmail.com?subject=${encodeURIComponent(
+    return `mailto:icdei.info@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
   };
 
-  const handleCashDonation = () => {
-    const subject = "New Cash Donation Submission";
-    const body = [
-      `Full Name: ${formData.fullName}`,
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone || "Not provided"}`,
-      `Donation Amount (USD): ${formData.cashAmount}`,
-      `Message: ${formData.message || "None"}`,
-      `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
-    ];
-    window.location.href = buildMailtoLink(subject, body);
-  };
-
-  const handleInKindDonation = () => {
-    const subject = "New In-Kind Donation Submission";
-    const body = [
-      `Full Name: ${formData.fullName}`,
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone || "Not provided"}`,
-      `Items to Donate: ${formData.itemsList}`,
-      `Message: ${formData.message || "None"}`,
-      `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
-    ];
-    window.location.href = buildMailtoLink(subject, body);
-  };
-
-  const handleOtherSupport = () => {
-    const subject = "New Support Inquiry";
-    const body = [
-      `Full Name: ${formData.fullName}`,
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone || "Not provided"}`,
-      `Support Type: ${formData.supportType}`,
-      `Message: ${formData.message || "None"}`,
-      `Newsletter Sign-up: ${formData.stayUpdated ? "Yes" : "No"}`,
-    ];
-    window.location.href = buildMailtoLink(subject, body);
+  const getSubject = () => {
+    if (formData.supportType === "donation") {
+      if (formData.donationType === "cash")
+        return "New Cash Donation Submission";
+      if (formData.donationType === "kind")
+        return "New In-Kind Donation Submission";
+      return "New Donation Inquiry";
+    }
+    return "New Support Inquiry";
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsProcessing(true);
 
-    if (formData.supportType === "donation") {
-      if (formData.donationType === "cash") {
-        handleCashDonation();
-      } else if (formData.donationType === "kind") {
-        handleInKindDonation();
-      }
-    } else {
-      handleOtherSupport();
-    }
+    const keys = getRelevantFieldKeys();
+    const bodyLines = keys.map((key) => {
+      const label = FIELD_LABELS[key] || key;
+      const value = formatValue(key, formData[key]);
+      return `${label}: ${value}`;
+    });
+
+    window.location.href = buildMailtoLink(getSubject(), bodyLines);
+
+    setTimeout(() => setIsProcessing(false), 1500);
   };
 
   const handleNavigateBack = () => {
@@ -321,7 +308,7 @@ export const Support = ({ onNavigate }) => {
                       </div>
                     </Form.Group>
 
-                    {formData.donationType === "kind" && (
+                    {/* {formData.donationType === "kind" && (
                       <Form.Group className="mb-4">
                         <Form.Label>Items You Want to Donate *</Form.Label>
                         <Form.Control
@@ -336,6 +323,49 @@ export const Support = ({ onNavigate }) => {
                           style={{ resize: "none" }}
                         />
                       </Form.Group>
+                    )} */}
+
+                    {formData.donationType === "kind" && (
+                      <>
+                        <Form.Group className="mb-4">
+                          <Form.Label>Items You Want to Donate *</Form.Label>
+                          <Form.Control
+                            as="textarea"
+                            name="itemsList"
+                            value={formData.itemsList}
+                            onChange={handleChange}
+                            required
+                            rows={5}
+                            placeholder="Please list the items you wish to donate"
+                            className="glass-input"
+                            style={{ resize: "none" }}
+                          />
+                        </Form.Group>
+
+                        {/* 👇 Contact card appears only for in-kind donations */}
+                        <div className="donation-contact-card mb-4">
+                          <p className="donation-contact-heading">
+                            <i className="fas fa-headset me-2"></i>
+                            Need to arrange item collection? Reach out to us:
+                          </p>
+                          <div className="donation-contact-row">
+                            <a
+                              href="tel:+2348012345678"
+                              className="donation-contact-item"
+                            >
+                              <i className="fas fa-phone-alt"></i>
+                              +234 801 234 5678
+                            </a>
+                            <a
+                              href="mailto:donate@yourorg.com"
+                              className="donation-contact-item"
+                            >
+                              <i className="fas fa-envelope"></i>
+                              donate@yourorg.com
+                            </a>
+                          </div>
+                        </div>
+                      </>
                     )}
 
                     {/* {formData.donationType === "cash" && (
@@ -366,7 +396,8 @@ export const Support = ({ onNavigate }) => {
                               Account Name
                             </span>
                             <span className="account-detail-value">
-                              Your Organization Name
+                              Impartville Children Dev and Empowerment
+                              Initiatives
                             </span>
                           </div>
                           <div className="account-detail-row">
@@ -374,7 +405,7 @@ export const Support = ({ onNavigate }) => {
                               Account Number
                             </span>
                             <span className="account-detail-value">
-                              0123456789
+                              1310224768
                             </span>
                           </div>
                           <div className="account-detail-row">
@@ -382,7 +413,7 @@ export const Support = ({ onNavigate }) => {
                               Bank Name
                             </span>
                             <span className="account-detail-value">
-                              First Bank of Nigeria
+                              Zenith Bank
                             </span>
                           </div>
                           <div className="account-detail-row">
